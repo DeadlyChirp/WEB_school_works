@@ -1,0 +1,5 @@
+#defile img {
+    width: 600px; /* Adjust the width as needed */
+    height: 500px; /* Adjust the height as needed */
+    object-fit: cover; /* This ensures images cover the area without losing their aspect ratio */
+}

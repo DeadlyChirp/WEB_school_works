@@ -1,0 +1,9 @@
+#interactive-block{
+    background-color: red;
+    width: 50%; // 50% of the parent's width
+    margin: 0 auto; // center the block
+    position: relative;
+    text-align: center;
+
+
+}

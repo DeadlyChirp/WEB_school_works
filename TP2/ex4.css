@@ -1,0 +1,11 @@
+#list1{
+    display: none;
+}
+
+#greeting{
+    font-size: 2em;
+    visibility: visible;
+    position: absolute;
+    left: -110px;
+    opacity: 1;
+}

@@ -1,0 +1,15 @@
+#span1{
+    display: inline;
+}
+
+#span2{
+display: none;
+}
+
+div:hover #span1{
+    display: none;
+}
+
+div:hover #span2{
+    display: inline;
+}

@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mini-cours Bootstrap</title>
+    <link rel="stylesheet" href="third-party/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="third-party/styles/github.css">
+    <script src="third-party/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <link href="monstyle.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  </head>
+  <body id="home" data-spy="scroll" data-target="#myNavBar" data-offset="1">
+
+    <nav class="navbar navbar-dark bg-dark fixed-top navbar-expand-sm" id="myNavBar">
+    <div class="container-fluid">
+    <div class="navbar-header">
+    <a class="navbar-brand" href="#"><span class="fas fa-globe"></span></a>
+    </div>
+    <button type="button" class="navbar-toggler ml-auto" data-toggle="collapse" data-target="#myNavbar">
+        <!-- affiche trois barres à la place des liens quand l'écran est
+        petit -->
+        <span class="fas fa-bars"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="myNavbar">
+    <ul class="navbar-nav nav ml-auto nav-pills">
+        <li class="nav-item active"><a class="nav-link" href="#home">Intro</a></li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Grilles<span class="caret"></span></a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                <li><a class="dropdown-item" href="#grille">Grille</a> </li>
+                <li><a class="dropdown-item" href="#tailles">Tailles d'écran</a></li>
+                <li><a class="dropdown-item" href="#grille-ex">Exemples</a> </li>
+            </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="#responsive">Responsive</a></li>
+        <li class="nav-item"><a class="nav-link" href="#exemples">Exemples</a></li>
+    </ul>
+    </div>
+    </nav>
+
+    <div class="jumbotron text-center">
+      <h1>Mini-cours Bootstrap</h1>
+      <h5>Éviter le calvaire CSS</h5>
+    </div>
+
+    <div id="intro" class="container-fluid">
+      <div class="row text-center">
+	<div class="col-sm-8">
+	  <h2>Bootstrap (v4.4.1)</h2>
+	  <div class="row">
+	    <div class="col-sm-6">
+	      <div class="alert alert-primary" role="alert"><i>Framework</i> «&nbsp;client&nbsp;» (= <strong>bibliothèque</strong> CSS et Javascript)</div>
+	    </div>
+	    <div class="col-sm-3">
+	      <button type="button" class="btn btn-secondary">HTML5 et CSS3</button>
+	    </div>
+	    <div class="col-sm-3">
+	      <button type="button" class="btn btn-info"><i>Responsive</i></button>
+	    </div>
+	  </div>
+	  <br /><br />
+          <form action="#suite">
+	  <button class="btn btn-primary">Allons-y !</button>
+          </form>
+	</div>
+	<div class="col-sm-4 align-self-center center-logo">
+	  <span class="fas fa-cloud logo"></span>
+	</div>
+      </div>
+    </div>
+
+    <div id="suite" class="container-fluid bg-grey">
+      <div class="row">
+	<div class="col-sm-4 align-self-center center-logo">
+	  <span class="fas fa-download logo"></span>
+	</div>
+	<div class="col-sm-8 shadow">
+	  <h2>Installation</h2>
+	  <p>Télécharger les fichiers Bootstrap dans un répertoire de votre
+      site ou utiliser des CDN.</p>
+	  <p>Entête et fin du HTML :</p>
+	  <pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html lang="fr"&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"&gt;
+    &lt;title&gt;Mini-cours Bootstrap&lt;/title&gt;
+    &lt;link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"&gt;
+    &lt;link href="monstyle.css" rel="stylesheet"&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    ...
+    &lt;script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"&gt;&lt;/script&gt;
+    &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"&gt;&lt;/script&gt;
+    &lt;script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"&gt;&lt;/script&gt;
+    &lt;script src="monscript.js"&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+    </code></pre>
+	</div>
+      </div>
+    </div>
+
+    <div id="grille" class="container-fluid">
+      <div class="row">
+	<div class="col-sm-9">
+	  <h2>Grille</h2>
+	  <p>Principe de base de Bootstrap : une grille de 12 colonnes.</p>
+	  <img src="bootstrap-grid.jpg" alt="Grille Bootstrap" style="width:80%;" />
+	  <p>Balise <code>row</code> : une ligne de 12 divisions.</p>
+	  <p>Balise <code>col-sm-8</code> : un élément sur 8 divisions sur écran «&nbsp;moyen&nbsp;» (sm).</p>
+	  <p>Exemple :</p>
+    <pre><code>&lt;div id="intro" class="container-fluid"&gt;
+      &lt;div class="row text-center"&gt;
+	&lt;div class="col-sm-8"&gt;
+	  &lt;h2&gt;Bootstrap&lt;/h2&gt;
+	  &lt;div class="row"&gt;
+	    &lt;div class="col-sm-6"&gt;
+	      &lt;p&gt;&lt;i&gt;Framework&lt;/i&gt; «&nbsp;client&nbsp;» (= &lt;strong&gt;bibliothèque&lt;/strong&gt; CSS et Javascript)&lt;/p&gt;
+	    &lt;/div&gt;
+	    &lt;div class="col-sm-3"&gt;
+	      &lt;p&gt;HTML5 et CSS3&lt;/p&gt;
+	    &lt;/div&gt;
+	    &lt;div class="col-sm-3"&gt;
+	      &lt;p&gt;&lt;i&gt;Responsive&lt;/i&gt;&lt;/p&gt;
+	    &lt;/div&gt;
+	  &lt;/div&gt;
+	  &lt;br /&gt;&lt;br /&gt;
+	  &lt;button class="btn btn-default btn-lg"&gt;Allons-y !&lt;/button&gt;
+	&lt;/div&gt;
+	&lt;div class="col-sm-4 align-self-center center-logo"&gt;
+	  &lt;span class="fas fa-cloud logo"&gt;&lt;/span&gt;
+	&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    </code></pre>
+	</div>
+	<div class="col-sm-3 align-self-center center-logo">
+	  <span class="fas fa-th logo"></span>
+	</div>
+      </div>
+    </div>
+
+    <div id="tailles" class="container-fluid bg-grey">
+      <h2 class="text-center" style="margin-bottom:40px;">Différentes taille d'écran</h2>
+      <div class="col-sm-2">
+      </div>
+      <div class="col-sm-8">
+	<table class="table table-striped">
+	  <tr>
+	    <th style="width:22%;">&nbsp;</th>
+	    <th style="width:19%;">Extra small devices<br>Phones (&lt;768px)</th>
+	    <th style="width:20%;">Small devices<br>Tablets (&gt;=768px)</th>
+	    <th style="width:21%;">Medium devices<br>Desktops (&gt;=992px)</th>
+	    <th style="width:18%;">Large devices<br>Desktops (&gt;=1200px)</th>
+	  </tr>
+	  <tr>
+	    <td><strong>Grid behaviour</strong></td>
+	    <td>Horizontal at all times</td>
+	    <td>Collapsed to start, horizontal above breakpoints</td>
+	    <td>Collapsed to start, horizontal above breakpoints</td>
+	    <td>Collapsed to start, horizontal above breakpoints</td>
+	  </tr>
+	  <tr>
+	    <td><strong>Container width</strong></td>
+	    <td>None (auto)</td>
+	    <td>750px</td>
+	    <td>970px</td>
+	    <td>1170px</td>
+	  </tr>
+	  <tr>
+	    <td><strong>Class prefix</strong></td>
+	    <td>.col-</td>
+	    <td>.col-sm-</td>
+	    <td>.col-md-</td>
+	    <td>.col-lg-</td>
+	  </tr>
+	  <tr>
+	    <td><strong>Number of columns</strong></td>
+	    <td>12</td>
+	    <td>12</td>
+	    <td>12</td>
+	    <td>12</td>
+	  </tr>
+	  <tr>
+	    <td><strong>Column width</strong></td>
+	    <td>Auto</td>
+	    <td>~62px</td>
+	    <td>~81px</td>
+	    <td>~97px</td>
+	  </tr>
+	  <tr>
+	    <td><strong>Gutter width</strong></td>
+	    <td>30px (15px on each side of a column)</td>
+	    <td>30px (15px on each side of a column)</td>
+	    <td>30px (15px on each side of a column)</td>
+	    <td>30px (15px on each side of a column)</td>
+	  </tr>
+	</table>
+      </div>
+      <div class="col-sm-2">
+      </div>
+    </div>
+
+    <div id="grille-ex" class="container-fluid text-center">
+      <h2>Exemple</h2>
+      <br/>
+      <div class="row">
+	<div class="col-sm-4">
+	  <div class="cadre bleu">
+	    <span class="fas fa-th-list logo-small"></span>
+	    <h4>Sur 4 colonnes</h4>
+	    <p>col-sm-4</p>
+	  </div>
+	</div>
+	<div class="col-sm-4">
+	  <div class="cadre vert">
+	    <span class="fas fa-signal logo-small"></span>
+	    <h4>Sur 4 colonnes</h4>
+	    <p>col-sm-4</p>
+	  </div>
+	</div>
+	<div class="col-sm-4">
+	  <div class="cadre bleu">
+	    <span class="fas fa-cog logo-small"></span>
+	    <h4>Sur 4 colonnes</h4>
+	    <p>col-sm-4</p>
+	  </div>
+	</div>
+      </div>
+      <br /><br />
+      <div class="row">
+	<div class="col-lg-6">
+	  <div class="cadre bleu">
+	    <span class="fas fa-redo logo-small"></span>
+	    <h4>Sur 6 colonnes</h4>
+	    <p>col-lg-6</p>
+	  </div>
+	</div>
+	<div class="col-lg-6">
+	  <div class="cadre bleu">
+	    <span class="fas fa-sync logo-small"></span>
+	    <h4>Sur 6 colonnes</h4>
+	    <p>col-lg-6</p>
+	  </div>
+	</div>
+      </div>
+      <br /><br />
+      <div class="row">
+	<div class="col-sm-2"></div>
+	<div class="col-sm-8">
+    <pre class="text-left"><code>
+    &lt;div class="container-fluid text-center"&gt;
+      &lt;div class="row"&gt;
+	&lt;div class="col-sm-4"&gt;
+	  ...
+	&lt;/div &gt;
+	&lt;div class="col-sm-4"&gt;
+	  ...
+    </code></pre>
+	</div>
+	<div class="col-sm-2"></div>
+      </div>
+    </div>
+
+    <div id="responsive" class="container-fluid bg-grey">
+      <div class="row">
+	<div class="col-sm-4 align-self-center center-logo">
+	  <span class="fas fa-10x fa-expand-arrows-alt logo"></span>
+	</div>
+	<div class="col-sm-8">
+	  <h2>Responsive</h2>
+	  <div class="row">
+	    <div class="col-12 col-sm-6 col-lg-3">
+	      <p class="cadre">La grille s'adapte à la taille de l'écran.</p>
+	    </div>
+	    <div class="col-12 col-sm-6 col-lg-3">
+	      <p class="cadre">Sur de petits écrans, les cellules d'une même ligne se rétractent verticalement (menu de navigation par exemple).</p>
+	    </div>
+	    <div class="col-12 col-sm-6 col-lg-3">
+	      <p class="cadre">On peut définir pour chaque taille d'écran un nombre de colonnes différent.</p>
+	    </div>
+	    <div class="col-12 col-sm-6 col-lg-3">
+	      <p class="cadre">Par exemple, afficher un trombinoscope sur un nombre de colonnes dépendant de la taille de l'écran.</p>
+	    </div>
+	  </div>
+	  <br /><br />
+	  <p>Fonctionnement interne : <code>@media</code> permet d'adapter le code CSS selon la taille de l'écran.</p>
+    <pre><code class="html">&lt;div class="row"&gt;
+  &lt;div class="col-12 col-sm-6 col-lg-3"&gt;
+    ...
+  &lt;/div&gt;
+  &lt;div class="col-12 col-sm-6 col-lg-3"&gt;
+	      ...
+    </code></pre>
+	</div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+	<div class="col-sm-8">
+	  <h2>Classes principales</h2>
+	  <dl class="dl-horizontal" style="width: 80%;">
+	    <dt>container</dt>
+	    <dd>«&nbsp;Active&nbsp;» la grille Bootstrap. Tout contenu doit être inclus
+	    dans un div <code>container</code>
+	      ou <code>container-fluid</code>.</dd>
+	    <dt>row</dt>
+	    <dd>Insère les éléments contenus dans le div <code>row</code> les
+	      uns à la suite des autres sur une «&nbsp;ligne&nbsp;» de la grille.</dd>
+	    <dt>col-*-*</dt>
+	    <dd>Un bloc sur plusieurs colonnes. Exemple
+	    : <code>col-6</code> aura 6 colonnes adaptées à un écran de
+	      smartphone.</dd>
+	    <dt>jumbotron</dt>
+	    <dd>Boîte de texte mis en évidence.</dd>
+	    <dt>etc.</dt>
+	    <dd>(images, boutons, navbar…)</dd>
+	  </dl>
+	</div>
+	<div class="col-sm-4 align-self-center center-logo">
+	  <span class="fas fa-pen logo"></span>
+	</div>
+      </div>
+    </div>
+
+    <div id="exemples" class="container-fluid text-center bg-grey">
+      <h2>Exemples</h2>
+    </div>
+    <div class="container-fluid text-justify bg-grey shadow">
+      <h4>Container-fluid</h4>
+      <p>«&nbsp;Longtemps, je me suis couché de bonne heure. Parfois, à peine ma
+      bougie éteinte, mes yeux se fermaient si vite que je n’avais pas le
+      temps de me dire : «&nbsp;Je m’endors.&nbsp;» Et, une demi-heure après, la pensée
+      qu’il était temps de chercher le sommeil m’éveillait ; je voulais poser
+      le volume que je croyais avoir encore dans les mains et souffler ma
+      lumière ; je n’avais pas cessé en dormant de faire des réflexions sur ce
+      que je venais de lire, mais ces réflexions avaient pris un tour un peu
+      particulier ; il me semblait que j’étais moi-même ce dont parlait
+      l’ouvrage : une église, un quatuor, la rivalité de François Ier et de
+      Charles Quint. Cette croyance survivait pendant quelques secondes à mon
+      réveil ; elle ne choquait pas ma raison mais pesait comme des écailles
+      sur mes yeux et les empêchait de se rendre compte que le bougeoir
+      n’était plus allumé. Puis elle commençait à me devenir inintelligible,
+      comme après la métempsycose les pensées d’une existence antérieure ; le
+      sujet du livre se détachait de moi, j’étais libre de m’y appliquer ou
+      non ; aussitôt je recouvrais la vue et j’étais bien étonné de trouver
+      autour de moi une obscurité, douce et reposante pour mes yeux, mais
+      peut-être plus encore pour mon esprit, à qui elle apparaissait comme une
+      chose sans cause, incompréhensible, comme une chose vraiment obscure. Je
+      me demandais quelle heure il pouvait être ; j’entendais le sifflement
+      des trains qui, plus ou moins éloigné, comme le chant d’un oiseau dans
+      une forêt, relevant les distances, me décrivait l’étendue de la campagne
+      déserte où le voyageur se hâte vers la station prochaine ; et le petit
+      chemin qu’il suit va être gravé dans son souvenir par l’excitation qu’il
+      doit à des lieux nouveaux, à des actes inaccoutumés, à la causerie
+      récente et aux adieux sous la lampe étrangère qui le suivent encore dans
+      le silence de la nuit, à la douceur prochaine du retour.&nbsp;»</p>
+    </div>
+
+    <div class="container text-justify bg-grey shadow">
+      <h4>Container</h4>
+      <p>«&nbsp;Pour une surprise, c’en fut une. A travers la brume, c’était
+	tellement étonnant ce qu’on découvrait soudain que nous nous refusâmes
+	d’abord à y croire et puis tout de même quand nous fûmes en plein
+	devant les choses, tout galérien qu’on était on s’est mis à bien
+	rigoler, en voyant ça, droit devant nous… <br />
+	«&nbsp;Figurez-vous qu’elle était debout leur ville, absolument
+	droite. New York c’est une ville debout. On en avait déjà vu nous des
+	villes bien sûr, et des belles encore, et des ports et des fameux
+	même. Mais chez nous, n’est-ce pas, elles sont couchées les villes, au
+	bord de la mer ou sur les fleuves, elles s’allongent sur le paysage,
+	elles attendent le voyageur, tandis que celle là l’Américaine, elle ne
+	se pâmait pas, non, elle se tenait bien raide, là, pas baisante du
+	tout, raide à faire peur.&nbsp;»</p>
+    </div>
+
+    <div class="container-fluid text-justify">
+      <h4>col-xs</h4>
+      <div class="row">
+	<div class="col-4 shadow">
+	  <p>Mon enfant, ma soeur,<br />
+	    Songe à la douceur <br />
+	    D'aller là-bas vivre ensemble !<br />
+	    Aimer à loisir,<br />
+	    Aimer et mourir <br />
+	    Au pays qui te ressemble !<br />
+	    Les soleils mouillés <br />
+	    De ces ciels brouillés <br />
+	    Pour mon esprit ont les charmes <br />
+	    Si mystérieux <br />
+	    De tes traîtres yeux,<br />
+	    Brillant à travers leurs larmes.</p>
+	</div>
+	<div class="col-4 shadow">
+	  <p>Là, tout n'est qu'ordre et beauté,<br />
+	    Luxe, calme et volupté.</p>
+	</div>
+	<div class="col-4 shadow">
+	  <p>Des meubles luisants,<br />
+	    Polis par les ans,<br />
+	    Décoreraient notre chambre ;<br />
+	    Les plus rares fleurs <br />
+	    Mêlant leurs odeurs <br />
+	    Aux vagues senteurs de l'ambre,<br />
+	    Les riches plafonds,<br />
+	    Les miroirs profonds,<br />
+	    La splendeur orientale,<br />
+	    Tout y parlerait <br />
+	    À l'âme en secret <br />
+	    Sa douce langue natale.</p>
+	</div>
+      </div>
+    </div>
+
+    <div class="container-fluid text-justify">
+      <h4>col-sm et supérieur (empilage vertical)</h4>
+      <div class="row">
+	<div class="col-md-4 shadow">
+	  <p>Là, tout n'est qu'ordre et beauté,<br />
+	    Luxe, calme et volupté.</p>
+	</div>
+	<div class="col-md-4 shadow">
+	  <p>Vois sur ces canaux<br />
+	    Dormir ces vaisseaux<br />
+	    Dont l'humeur est vagabonde ;<br />
+	    C'est pour assouvir<br />
+	    Ton moindre désir<br />
+	    Qu'ils viennent du bout du monde.<br />
+	    - Les soleils couchants<br />
+	    Revêtent les champs,<br />
+	    Les canaux, la ville entière,<br />
+	    D'hyacinthe et d'or ;<br />
+	    Le monde s'endort<br />
+	    Dans une chaude lumière.</p>
+	</div>
+	<div class="col-md-4 shadow">
+	  <p>Là, tout n'est qu'ordre et beauté,<br />
+	    Luxe, calme et volupté.</p>
+	</div>
+      </div>
+    </div>
+
+    <div class="container-fluid text-justify">
+      <h4>col-* (plusieurs options)</h4>
+      <div class="row">
+	<div class="col-6 col-sm-4 col-md-3 col-lg-2 cadre">
+	  <p>Si tu peux voir détruit l'ouvrage de ta vie<br />
+	    Et sans dire un seul mot te mettre à rebâtir,<br />
+	    Ou perdre d'un seul coup le gain de cent parties<br />
+	    Sans un geste et sans un soupir ;</p>
+	</div>
+	<div class="col-6 col-sm-4 col-md-3 col-lg-2 cadre">
+	  <p>Si tu peux être amant sans être fou d'amour,<br />
+	    Si tu peux être fort sans cesser d'être tendre<br />
+	    Et, te sentant haï, sans haïr à ton tour,<br />
+	    Pourtant lutter et te défendre ;</p>
+	</div>
+	<div class="clearfix visible-xs">
+	  <!-- effectue un clear sur les flottants seulement dans le cas xs -->
+	</div>
+	<div class="col-6 col-sm-4 col-md-3 col-lg-2 cadre">
+	  <p>Si tu peux supporter d'entendre tes paroles<br />
+	    Travesties par des gueux pour exciter des sots,<br />
+	    Et d'entendre mentir sur toi leurs bouches folles<br />
+	    Sans mentir toi-même d'un mot ;</p>
+	</div>
+	<div class="clearfix visible-sm">
+	</div>
+	<div class="col-6 col-sm-4 col-md-3 col-lg-2 cadre">
+	  <p>Si tu peux rester digne en étant populaire,<br />
+	    Si tu peux rester peuple en conseillant les rois<br />
+	    Et si tu peux aimer tous tes amis en frère<br />
+	    Sans qu'aucun d'eux soit tout pour toi ;</p>
+	</div>
+	<div class="clearfix visible-xs visible-md">
+	</div>
+	<div class="col-6 col-sm-4 col-md-3 col-lg-2 cadre">
+	  <p>Si tu sais méditer, observer et connaître<br />
+	    Sans jamais devenir sceptique ou destructeur ;<br />
+	    Rêver, mais sans laisser ton rêve être ton maître,<br />
+	    Penser sans n'être qu'un penseur ;</p>
+	</div>
+	<div class="col-6 col-sm-4 col-md-3 col-lg-2 cadre">
+	  <p>Si tu peux être dur sans jamais être en rage,<br />
+	    Si tu peux être brave et jamais imprudent,<br />
+	    Si tu sais être bon, si tu sais être sage<br />
+	    Sans être moral ni pédant ;</p>
+	</div>
+	<div class="clearfix visible-xs visible-sm visible-lg">
+	</div>
+	<div class="col-6 col-sm-4 col-md-3 col-lg-2 cadre">
+	  <p>Si tu peux rencontrer Triomphe après Défaite<br />
+	    Et recevoir ces deux menteurs d'un même front,<br />
+	    Si tu peux conserver ton courage et ta tête<br />
+	    Quand tous les autres les perdront,</p>
+	</div>
+	<div class="col-6 col-sm-4 col-md-3 col-lg-2 cadre">
+	  <p>Alors les Rois, les Dieux, la Chance et la Victoire<br />
+	    Seront à tout jamais tes esclaves soumis<br />
+	    Et, ce qui vaut mieux que les Rois et la Gloire,<br />
+	    Tu seras un homme, mon fils.</p>
+	</div>
+      </div>
+    </div>
+
+    <div class="container-fluid bg-grey">
+	<h2>Quelques images</h2>
+      <div class="row">
+	<div class="col-sm-4">
+	  <img class="img-thumbnail" alt="Monet - Cathédrale de Rouen 1"
+	       src="monet1.jpg" />
+	</div>
+	<div class="col-sm-4">
+	  <img class="img-thumbnail" alt="Monet - Cathédrale de Rouen 2"
+	       src="monet2.jpg" />
+	</div>
+	<div class="col-sm-4">
+	  <img class="img-thumbnail" alt="Monet - Cathédrale de Rouen 3"
+	       src="monet3.jpg" />
+	</div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <h2>Pour aller plus loin…</h2>
+      <ul>
+	<li>Autres classes prédéfinies (alertes, boutons, formulaires, carousels, etc.)</li>
+	<li>Dynamiser le site avec jQuery et CSS</li>
+	<li>Ressources :
+	  <ul>
+	    <li><a href="http://getbootstrap.com/docs/">Site de Bootstrap</a></li>
+	    <li><a href="http://www.w3schools.com/bootstrap4/">w3schools sur
+		bootstrap</a></li>
+	    <li><a href="https://openclassrooms.com/courses/prenez-en-main-bootstrap">OpenClassrooms
+	    sur bootstrap</a></li>
+	  </ul>
+      </ul>
+    </div>
+
+
+    <!-- JQuery et scripts Bootstrap et jQuery, en fin de page -->
+    <script src="jquery/jquery-3.3.1.min.js"></script>
+    <script src="third-party/bootstrap/js/bootstrap.min.js"></script>
+  </body>
+</html>

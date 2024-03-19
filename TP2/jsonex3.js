@@ -26,7 +26,7 @@ $(document).ready (function () {
     updateMessage();
 
     $('body').on('click','header span, footer span', function () {
-        $(this).hide();
+        $(this).hide(); // Hide the span when clicked
         updateMessage();
     });
 });

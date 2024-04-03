@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des étudiants</title>
+</head>
+<body>
+<h1>Liste des étudiants</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Numéro</th>
+        <th>Nom</th>
+        <th>Prénom</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% etudiants.forEach(etudiant => { %>
+        <tr onclick="window.location='/etud/<%= etudiant.numero %>'" style="cursor:pointer;">
+            <td><%= etudiant.numero %></td>
+            <td><%= etudiant.nom %></td>
+            <td><%= etudiant.prenom %></td>
+        </tr>
+    <% }); %>
+    </tbody>
+</table>
+</body>
+</html>
